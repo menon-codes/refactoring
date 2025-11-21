@@ -28,9 +28,8 @@ public class StatementPrinter {
 
         for (Performance performance : getInvoice().getPerformances()) {
             final int thisAmount = getAmount(performance);
-            final Play play = getPlays().get(performance.getPlayID());
             final String frmtStr = usd(thisAmount);
-            final String str = String.format("  %s: %s (%s seats)%n", play.getName(), frmtStr,
+            final String str = String.format("  %s: %s (%s seats)%n", getPlay(performance).getName(), frmtStr,
                 performance.getAudience());
             result.append(str);
         }
@@ -44,13 +43,22 @@ public class StatementPrinter {
     }
 
     /**
+     * Returns the Play object for a given Performance.
+     * @param performance the performance
+     * @return the Play object
+     */
+    private Play getPlay(Performance performance) {
+        return plays.get(performance.getPlayID());
+    }
+
+    /**
      * Calculates the total volume credits for the invoice.
      * @return the total volume credits
      */
     private int getTotalVolumeCredits() {
         int result = 0;
         for (Performance performance : getInvoice().getPerformances()) {
-            final Play play = getPlays().get(performance.getPlayID());
+            final Play play = getPlay(performance);
             result += getVolumeCredits(performance, play);
         }
         return result;
@@ -90,7 +98,7 @@ public class StatementPrinter {
     }
 
     private int getAmount(Performance performance) {
-        final Play play = getPlays().get(performance.getPlayID());
+        final Play play = getPlay(performance);
         int result;
         switch (play.getType()) {
             case "tragedy":
