@@ -1,3 +1,6 @@
+8a8594f refactor: Task 2.1, add the getPlay method
+55c1a75 docs: Update README to mark tasks as completed for CheckStyle issues
+ffe294d chore: Task 2.4 - Updated log.txt with latest commit for Task 2.4
 300ab00 refactor: Task 2.4 - Split loops, extracted getTotalAmount and getTotalVolumeCredits, and updated statement method
 3331ab8 chore: Task 2.3 - Updated log.txt with latest commit for Task 2.3
 ea08394 refactor: Task 2.3 - Extracted usd helper for currency formatting and updated usages
