@@ -23,28 +23,49 @@ public class StatementPrinter {
      * @throws RuntimeException if one of the play types is not known
      */
     public String statement() {
-        int totalAmount = 0;
-        int volumeCredits = 0;
         final String customer = getInvoice().getCustomer();
         final StringBuilder result = new StringBuilder("Statement for " + customer + System.lineSeparator());
 
         for (Performance performance : getInvoice().getPerformances()) {
             final int thisAmount = getAmount(performance);
-
             final Play play = getPlays().get(performance.getPlayID());
-
-            volumeCredits += getVolumeCredits(performance, play);
-
-            // print line for this order
             final String frmtStr = usd(thisAmount);
             final String str = String.format("  %s: %s (%s seats)%n", play.getName(), frmtStr,
                 performance.getAudience());
             result.append(str);
-            totalAmount += thisAmount;
         }
+
+        final int totalAmount = getTotalAmount();
+        final int volumeCredits = getTotalVolumeCredits();
+
         result.append(String.format("Amount owed is %s%n", usd(totalAmount)));
         result.append(String.format("You earned %s credits%n", volumeCredits));
         return result.toString();
+    }
+
+    /**
+     * Calculates the total volume credits for the invoice.
+     * @return the total volume credits
+     */
+    private int getTotalVolumeCredits() {
+        int result = 0;
+        for (Performance performance : getInvoice().getPerformances()) {
+            final Play play = getPlays().get(performance.getPlayID());
+            result += getVolumeCredits(performance, play);
+        }
+        return result;
+    }
+
+    /**
+     * Calculates the total amount for the invoice.
+     * @return the total amount in cents
+     */
+    private int getTotalAmount() {
+        int result = 0;
+        for (Performance performance : getInvoice().getPerformances()) {
+            result += getAmount(performance);
+        }
+        return result;
     }
 
     /**
