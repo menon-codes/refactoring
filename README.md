@@ -179,9 +179,11 @@ Hover — don't click — and a popup will appear mentioning what the problem is
 > The project stores information about CheckStyle in `.idea/checkstyle-idea.xml`.
 
 - [ ] **For each Java source file in `src/main/java/`, fix all CheckStyle issues that are detected.**
-  You should either see the CheckStyle Tool Window icon (it looks like a pencil) on the left of IntelliJ or
-  you may need to go to `View -> Tool Windows -> CheckStyle` to open the CheckStyle Tool Window.
-  The following provides more about this step.
+   You should either see the CheckStyle Tool Window icon (it looks like a pencil) on the left of IntelliJ or
+   you may need to go to `View -> Tool Windows -> CheckStyle` to open the CheckStyle Tool Window.
+   The following provides more about this step.
+
+- [x] **For each Java source file in `src/main/java/`, fix all CheckStyle issues that are detected.**
 
 > **Important:** make sure you are using the provided `mystyle.xml` configuration for CheckStyle as outlined above and
   not one of the other style files bundled with IntelliJ.
