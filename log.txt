@@ -1,3 +1,5 @@
+300ab00 refactor: Task 2.4 - Split loops, extracted getTotalAmount and getTotalVolumeCredits, and updated statement method
+3331ab8 chore: Task 2.3 - Updated log.txt with latest commit for Task 2.3
 ea08394 refactor: Task 2.3 - Extracted usd helper for currency formatting and updated usages
 74a5136 refactor: Task 2.2, Improve StatementPrinter by extracting methods for amount calculation and volume credits
 598922d chore: Updated log.txt with latest commit history
